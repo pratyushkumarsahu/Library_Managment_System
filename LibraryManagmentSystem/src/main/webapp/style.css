@@ -1,0 +1,53 @@
+/* styles.css */
+:root {
+    --cream: #FFF8E7;
+    --beige: #F5E6CC;
+    --gold: #D4A017;
+    --navy: #1B263B;
+}
+
+body {
+    background: var(--cream);
+    color: var(--navy);
+}
+
+.text-navy {
+    color: var(--navy);
+}
+
+.text-gold {
+    color: var(--gold);
+}
+
+.bg-cream {
+    background: var(--cream);
+}
+
+.bg-gradient-to-r.from-gold {
+    background: linear-gradient(to right, var(--gold), var(--beige));
+}
+
+.bg-gradient-to-r.from-navy {
+    background: linear-gradient(to right, var(--navy), #2B3A67);
+}
+
+.shadow-glow {
+    box-shadow: 0 4px 15px rgba(212, 160, 23, 0.5);
+}
+
+.carousel {
+    scroll-behavior: smooth;
+}
+
+.book-card, .member-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.book-card:hover, .member-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(212, 160, 23, 0.5);
+}
+
+input:focus, textarea:focus {
+    ring: 2px var(--gold);
+}
