@@ -1,28 +1,38 @@
 package com.library.servelet;
-import com.library.Dao.DBconnection;
-import java.io.*;
-import java.sql.*;
-import javax.servlet.*;
-import javax.servlet.http.*;
 
+import java.io.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.library.model.User;
+
+@WebServlet("/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        String fullname = req.getParameter("fullname");
-        String address = req.getParameter("address");
-        String username = req.getParameter("username");
-        String password = req.getParameter("password");
-        
-        try {
-            Connection con = DBconnection.getConnection();
-            PreparedStatement ps = con.prepareStatement("INSERT INTO users(fullname, address, username, password) VALUES(?,?,?,?)");
-            ps.setString(1, fullname);
-            ps.setString(2, address);
-            ps.setString(3, username);
-            ps.setString(4, password);
-            ps.executeUpdate();
-            res.sendRedirect("index.jsp");
-        } catch(Exception e) {
-            e.printStackTrace();
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        String name = request.getParameter("name");
+        String address = request.getParameter("address");
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+
+        // ✅ Create user object and set its values
+        User user = new User();
+        user.setName(name);
+        user.setAddress(address);
+        user.setUsername(username);
+        user.setPassword(password);
+
+        User dao = new User();
+        boolean result = dao.registerUser(user);
+
+        if (result) {
+            response.sendRedirect("login.jsp?msg=registered");
+        } else {
+            response.sendRedirect("register.jsp?msg=error");
         }
     }
 }

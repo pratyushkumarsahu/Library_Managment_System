@@ -9,6 +9,11 @@
     <title>Smart Library</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 <body class="bg-gray-100 font-sans">
     <!-- Navigation Bar -->
@@ -17,14 +22,17 @@
             <div class="flex items-center">
                 <span class="text-2xl font-bold text-navy">📚 Smart Library</span>
             </div>
+
+            <!-- Updated Navbar Links -->
             <ul class="hidden md:flex space-x-6">
-                <li><a href="#" class="text-navy hover:text-gold transition duration-300">Home</a></li>
-                <li><a href="#" class="text-navy hover:text-gold transition duration-300">Books</a></li>
-                <li><a href="#" class="text-navy hover:text-gold transition duration-300">Members</a></li>
-                <li><a href="#" class="text-navy hover:text-gold transition duration-300">Issue/Return</a></li>
-                <li><a href="#" class="text-navy hover:text-gold transition duration-300">About</a></li>
-                <li><a href="#" class="text-navy hover:text-gold transition duration-300">Contact</a></li>
+                <li><a href="#home" class="text-navy hover:text-gold transition duration-300">Home</a></li>
+                <li><a href="#books" class="text-navy hover:text-gold transition duration-300">Books</a></li>
+                <li><a href="#members" class="text-navy hover:text-gold transition duration-300">Members</a></li>
+                <li><a href="#issue-return" class="text-navy hover:text-gold transition duration-300">Issue/Return</a></li>
+                <li><a href="#about" class="text-navy hover:text-gold transition duration-300">About</a></li>
+                <li><a href="#contact" class="text-navy hover:text-gold transition duration-300">Contact</a></li>
             </ul>
+
             <div class="flex space-x-4">
                 <a href="login.jsp" class="px-4 py-2 bg-gradient-to-r from-gold to-beige text-navy rounded-full hover:shadow-glow transition duration-300">Login</a>
                 <a href="#" class="px-4 py-2 bg-gradient-to-r from-navy to-blue-800 text-white rounded-full hover:shadow-glow transition duration-300">Sign Up</a>
@@ -33,7 +41,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="relative h-96 flex items-center justify-center bg-cover bg-center" style="background-image: url('images/bookshelf-bg.jpg');">
+    <section id="home" class="relative h-96 flex items-center justify-center bg-cover bg-center" style="background-image: url('images/bookshelf-bg.jpg');">
         <div class="absolute inset-0 bg-gradient-to-b from-cream to-navy opacity-70"></div>
         <div class="relative z-10 text-center">
             <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">Welcome to Smart Library – Explore, Borrow, Learn</h1>
@@ -43,8 +51,8 @@
         </div>
     </section>
 
-    <!-- Featured Books Carousel -->
-    <section class="container mx-auto py-12">
+    <!-- Featured Books -->
+    <section id="books" class="container mx-auto py-12">
         <h2 class="text-3xl font-bold text-navy mb-6 text-center">Featured Books</h2>
         <div class="carousel flex space-x-4 overflow-x-auto pb-4">
             <c:forEach var="book" items="${featuredBooks}">
@@ -61,26 +69,8 @@
         </div>
     </section>
 
-    <!-- Book Catalog Grid -->
-    <section class="container mx-auto py-12">
-        <h2 class="text-3xl font-bold text-navy mb-6 text-center">Book Catalog</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            <c:forEach var="book" items="${bookCatalog}">
-                <div class="book-card bg-white bg-opacity-20 backdrop-filter backdrop-blur-md rounded-lg shadow-md hover:shadow-glow hover:scale-105 transition duration-300">
-                    <img src="${book.coverImage}" alt="${book.title}" class="w-full h-48 object-cover rounded-t-lg">
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold text-navy">${book.title}</h3>
-                        <p class="text-sm text-gray-600">${book.author}</p>
-                        <p class="text-sm text-gray-500">${book.genre}</p>
-                        <span class="inline-block mt-2 px-3 py-1 bg-green-500 text-white rounded-full text-xs">${book.availability}</span>
-                    </div>
-                </div>
-            </c:forEach>
-        </div>
-    </section>
-
-    <!-- Member Section -->
-    <section class="container mx-auto py-12">
+    <!-- Members Section -->
+    <section id="members" class="container mx-auto py-12">
         <h2 class="text-3xl font-bold text-navy mb-6 text-center">Our Members</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             <c:forEach var="member" items="${members}">
@@ -95,8 +85,8 @@
         </div>
     </section>
 
-    <!-- Issue/Return Section Preview -->
-    <section class="container mx-auto py-12">
+    <!-- Issue/Return Section -->
+    <section id="issue-return" class="container mx-auto py-12">
         <h2 class="text-3xl font-bold text-navy mb-6 text-center">Issue or Return Books</h2>
         <div class="flex justify-center space-x-6">
             <button class="px-6 py-3 bg-gradient-to-r from-gold to-beige text-navy rounded-full hover:shadow-glow transition duration-300">Issue Book</button>
@@ -105,7 +95,7 @@
     </section>
 
     <!-- About Section -->
-    <section class="container mx-auto py-12 bg-cream">
+    <section id="about" class="container mx-auto py-12 bg-cream">
         <h2 class="text-3xl font-bold text-navy mb-6 text-center">About Smart Library</h2>
         <p class="text-center text-gray-600 max-w-2xl mx-auto">
             Smart Library is dedicated to fostering a love for reading and learning. Our mission is to provide seamless access to a vast collection of books, manage memberships efficiently, and create a scholarly environment for all.
@@ -113,7 +103,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="container mx-auto py-12">
+    <section id="contact" class="container mx-auto py-12">
         <h2 class="text-3xl font-bold text-navy mb-6 text-center">Contact Us</h2>
         <form class="max-w-lg mx-auto space-y-4">
             <input type="text" placeholder="Name" class="w-full p-4 rounded-lg bg-white bg-opacity-30 backdrop-filter backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-gold">
