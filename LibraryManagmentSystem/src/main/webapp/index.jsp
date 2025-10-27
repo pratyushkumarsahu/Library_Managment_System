@@ -112,12 +112,6 @@
             <button type="submit" class="w-full p-4 bg-gradient-to-r from-gold to-beige text-navy rounded-lg hover:shadow-glow transition duration-300">Submit</button>
         </form>
     </section>
-	<h3>Select an option:</h3>
-	    <ul>
-	        <li><a href="viewBooks">View Featured Books</a></li>
-	        <li><a href="viewAuthors">View Authors</a></li>
-	    </ul>
-
 
     <script src="js/scripts.js"></script>
 </body>
