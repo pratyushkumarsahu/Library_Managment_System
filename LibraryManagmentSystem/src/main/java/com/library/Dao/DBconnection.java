@@ -10,7 +10,7 @@ public class DBconnection {
         try {
             if (conn == null || conn.isClosed()) {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/library_management", "root", "ROHIT1234");
+                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/librarydb", "root", "Pratibimbits@2004");
             }
         } catch (Exception e) {
             e.printStackTrace();
